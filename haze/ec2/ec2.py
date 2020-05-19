@@ -110,15 +110,15 @@ def readInstanceTag(instanceID, tagName="Name", connection=None):
 
     if not connection:
       # Assume AWS credentials are in the environment or the instance is using an IAM role
-      connection = boto.ec2.connect_to_region(myRegion())
+        connection = boto.ec2.connect_to_region(myRegion())
 
     # Filter the tag values for our instance_id
     # http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ApiReference-cmd-DescribeTags.html
     tagData = connection.get_all_tags(filters={"resource-id": instanceID, "key": tagName})
     if tagData:
-      tagValue = tagData[0].value
+        tagValue = tagData[0].value
     else:
-      raise RuntimeError("{}: No such tag on {}".format(tagName, instanceID))
+        raise RuntimeError("{}: No such tag on {}".format(tagName, instanceID))
     return tagValue
 
 def readMyEC2Tag(tagName, connection=None):
@@ -135,7 +135,7 @@ def readMyEC2Tag(tagName, connection=None):
 
     if not connection:
       # Assume AWS credentials are in the environment or the instance is using an IAM role
-      connection = boto.ec2.connect_to_region(myRegion())
+        connection = boto.ec2.connect_to_region(myRegion())
 
     return readInstanceTag(connection=connection,
                            instanceID=myInstanceID(),
