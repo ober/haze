@@ -30,45 +30,38 @@ licensed python module.
 import argparse
 import haze.ec2
 
-
 # Bash helpers
 def awsAMIid():
-  """Print a running instance's AMI ID"""
-  print haze.ec2.myAMIid()
-
+    """Print a running instance's AMI ID"""
+    print(haze.ec2.myAMIid())
 
 def awsInstanceID():
-  """Print a running instance's instance ID"""
-  print haze.ec2.myInstanceID()
-
+    """Print a running instance's instance ID"""
+    print(haze.ec2.myInstanceID())
 
 def awsInstanceType():
-  """Print a running instance's instance type"""
-  print haze.ec2.myInstanceType()
-
+    """Print a running instance's instance type"""
+    print(haze.ec2.myInstanceType())
 
 def awsMyRegion():
-  """Print a running instance's AWS region"""
-  print haze.ec2.myRegion()
-
+    """Print a running instance's AWS region"""
+    print(haze.ec2.myRegion())
 
 def awsPublicIPv4():
-  """Print a running instance's AMI ID"""
-  print haze.ec2.myPublicIPv4()
-
+    """Print a running instance's AMI ID"""
+    print(haze.ec2.myPublicIPv4())
 
 def awsReadInstanceTag():
-  """Print key from a running instance's metadata"""
-  parser = argparse.ArgumentParser()
+    """Print key from a running instance's metadata"""
+    parser = argparse.ArgumentParser()
 
-  parser.add_argument("--tag",
-                      dest="tag",
-                      required=True,
-                      help="Which instance tag to read")
+    parser.add_argument("--tag",
+                        dest="tag",
+                        required=True,
+                        help="Which instance tag to read")
 
-  cli = parser.parse_args()
-  print haze.ec2.readMyEC2Tag(tagName=cli.tag)
-
+    cli = parser.parse_args()
+    print(haze.ec2.readMyEC2Tag(tagName=cli.tag))
 
 if __name__ == "__main__":
-  awsInstanceID()
+    awsInstanceID()

@@ -85,7 +85,7 @@ setup(
     "Development Status :: 3 - Alpha",
     "Operating System :: POSIX",
     "License :: OSI Approved :: Apache Software License",
-    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3.0",
     "Topic :: System :: Systems Administration",
   ],
   keywords=['aws', 'cloud'],

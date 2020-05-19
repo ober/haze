@@ -27,30 +27,29 @@ from logrus.cli import findSubCommand, isProgram
 
 
 def hazeDriver():
-  """
-  Process the command line arguments and run the appropriate haze subcommand.
+    """
+    Process the command line arguments and run the appropriate haze subcommand.
 
-  We want to be able to do git-style handoffs to subcommands where if we
-  do `haze aws foo bar` and the executable haze-aws-foo exists, we'll call
-  it with the argument bar.
+    We want to be able to do git-style handoffs to subcommands where if we
+    do `haze aws foo bar` and the executable haze-aws-foo exists, we'll call
+    it with the argument bar.
 
-  We deliberately don't do anything with the arguments other than hand
-  them off to the haze subcommand. Subcommands are responsible for their
-  own argument parsing.
-  """
-  try:
-    (command, args) = findSubCommand(sys.argv)
+    We deliberately don't do anything with the arguments other than hand
+    them off to the haze subcommand. Subcommands are responsible for their
+    own argument parsing.
+    """
+    try:
+        (command, args) = findSubCommand(sys.argv)
 
-    # If we can't construct a subcommand from sys.argv, it'll still be able
-    # to find this haze driver script, and re-running ourself isn't useful.
-    if os.path.basename(command) == "haze":
-      print "Could not find a subcommand for %s" % " ".join(sys.argv)
-      sys.exit(1)
-  except StandardError:
-    print "Could not find a subcommand for %s" % " ".join(sys.argv)
-    sys.exit(1)
-  check_call([command] + args)
-
+        # If we can't construct a subcommand from sys.argv, it'll still be able
+        # to find this haze driver script, and re-running ourself isn't useful.
+        if os.path.basename(command) == "haze":
+            print('Could not find a subcommand for {}'.format(" ".join(sys.argv)))
+            sys.exit(1)
+    except StandardError:
+        print('Could not find a subcommand for {}'.format(" ".join(sys.argv)))
+        sys.exit(1)
+        check_call([command] + args)
 
 if __name__ == "__main__":
-  hazeDriver()
+    hazeDriver()
